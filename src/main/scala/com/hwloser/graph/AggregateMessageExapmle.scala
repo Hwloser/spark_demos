@@ -16,6 +16,13 @@ object AggregateMessageExapmle {
 
     val sc = spark.sparkContext
 
+    // log normal graph example
+    GraphGenerators
+      .logNormalGraph(sc, numVertices = 100)
+      .triplets
+      .take(20)
+      .foreach(println)
+
     val graph = GraphGenerators
       .logNormalGraph(sc, numVertices = 100)
       .mapVertices((id, _) => id.toDouble)
